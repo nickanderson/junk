@@ -1,0 +1,21 @@
+# This is a basic workflow to help you get started with Actions
+
+name: My Testing Workflow #1
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on the default branch every night at 3:15 am
+  pull_request:
+    types: [review_requested]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+ 
+jobs:
+  my_job_1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo 'A review was requested'
+      - name: Install cf-remote
+        run: pip3 install cf-remote
