@@ -6,7 +6,11 @@ name: My Testing Workflow #1
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
- 
+  
+  # Triggered by any review request
+  pull_request:
+    types: [review_requested]
+  
 jobs:
   my_job_1:
     runs-on: ubuntu-latest
