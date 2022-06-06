@@ -1,6 +1,6 @@
-for each in $(ls | grep "\.cf"); do
+for each in $(ls | grep "\.cf$"); do
   output=$(cf-agent -Kf $each)
-  if [ echo $output | grep Pass ] && [ echo $outptu | grep -v FAILED ]; then
+  if [ "echo $output | grep Pass" ] && [ e"cho $output | grep -v FAILED" ]; then
     exit 0
   else
     exit 1
