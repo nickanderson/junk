@@ -7,3 +7,4 @@ sudo apt install ./$PACKAGE_FILENAME
 mkdir -p ~/.cfagent/inputs
 ln -s /var/cfengine/share/NovaBase/masterfiles/lib/ ~/.cfagent/inputs/lib
 find ~/.cfagent
+find /var/cfengine
