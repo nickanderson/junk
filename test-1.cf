@@ -1,0 +1,59 @@
+#!/var/cfengine/bin/cf-agent -f-
+bundle agent init
+# @brief Initialize the environment to prepare for the test
+{
+  vars:
+      "testfile" string => "/tmp/test-reports-report_to_file.txt";
+
+  files:
+      "$(testfile)"
+        delete => my_tidy,
+        if => fileexists( $(testfile) );
+}
+body delete my_tidy
+# @brief Duplicated from the stdlib
+{
+        dirlinks => "delete";
+        rmdirs   => "true";
+}
+
+bundle agent test
+# @brief Test that report_to_file causes reports promises to be directed into a file.
+{
+  reports:
+      "Hello World!"
+        report_to_file => "$(init.testfile)";
+}
+
+bundle agent check
+# @brief Check that reports sent to a file are found as expected
+{
+  classes:
+      "testfile_exists" expression => fileexists( "$(init.testfile)" );
+
+  reports:
+    testfile_exists::
+      "$(with)"
+        with => ifelse( regcmp( "Hello World!",
+                                readfile( "$(init.testfile)" ) ), "Pass",
+                        "FAIL" );
+}
+
+bundle agent cleanup
+# @brief Clean up after checking test results
+{
+  files:
+      "$(init.testfile)"
+        delete => my_tidy,
+        if => fileexists( "$(init.testfile)" );
+}
+
+bundle agent __main__
+# @brief Clean up after checking test results
+{
+  methods:
+      "init";
+      "test";
+      "check";
+      "cleanup";
+}
