@@ -5,5 +5,5 @@ sudo apt install ./$PACKAGE_FILENAME
 
 # Setup un-privledged execution
 mkdir -p ~/.cfagent/inputs
-ln -s /var/cfengine/share/NovaBase/masterfiles/lib ~/.cfagent/inputs/lib
+ln -s /var/cfengine/share/NovaBase/masterfiles/lib/ ~/.cfagent/inputs/lib
 find ~/.cfagent
