@@ -4,10 +4,6 @@ name: My Testing Workflow #1
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on the default branch every night at 3:15 am
-  pull_request:
-    types: [review_requested]
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
  
