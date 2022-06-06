@@ -21,3 +21,5 @@ jobs:
         run: pip3 install cf-remote
       - name: Install CFEngine Hub Version Master
         run: sh ./install-cfengine-hub-version-master.sh
+      - name: Check for Pass and not FAILED
+        run: sh ./check-each-cf-emits-Pass-not-FAIL.sh
