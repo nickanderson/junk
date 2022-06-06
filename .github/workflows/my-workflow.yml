@@ -19,3 +19,5 @@ jobs:
       - run: echo 'A review was requested'
       - name: Install cf-remote
         run: pip3 install cf-remote
+      - name: Install CFEngine Hub Version Master
+        run: sh ./install-cfengine-hub-version-master.sh
