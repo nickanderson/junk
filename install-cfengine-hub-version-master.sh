@@ -4,7 +4,8 @@ PACKAGE_FILENAME=$(basename $URL)
 sudo apt install ./$PACKAGE_FILENAME
 
 # Setup un-privledged execution
-mkdir -p ~/.cfagent/inputs
-ln -s /var/cfengine/share/NovaBase/masterfiles/lib/ ~/.cfagent/inputs/lib
+mkdir -p ~/.cfagent/inputs/
+cp -Rv /var/cfengine/share/NovaBase/masterfiles/lib ~/.cfagent/inputs/
+ln -s /var/cfengine/bin ~/.cfagent/bin
+cf-key
 find ~/.cfagent
-find /var/cfengine
