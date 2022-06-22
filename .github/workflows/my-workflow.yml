@@ -9,8 +9,8 @@ on:
   
   # Triggered by any review request
   pull_request:
-    types: [review_requested]
-  
+    types: [opened, review_requested]
+
 jobs:
   my_job_1:
     runs-on: ubuntu-latest
