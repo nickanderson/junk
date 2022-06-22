@@ -11,7 +11,7 @@ for each in $(ls | grep "\.cf$"); do
     echo "$output"
   fi
 done
-if [ $FAILURES -eq 0 ]; then
+if [ ! $FAILURES -eq 0 ]; then
   # Non zero failures, fail
   exit 1
 else
